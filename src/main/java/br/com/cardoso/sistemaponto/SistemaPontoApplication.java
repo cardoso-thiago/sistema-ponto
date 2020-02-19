@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class SistemaPontoApplication {
 
 	public static void main(String[] args) {
-		System.setProperty("user.timezone", "GMT-3");
 		SpringApplication.run(SistemaPontoApplication.class, args);
 	}
 }
