@@ -75,16 +75,7 @@ public class UsuarioControllerTest {
     public void editaUsuarioInexistente() throws Exception {
         mockMvc.perform(put("/api/users/" + 123456)
                 .contentType(APPLICATION_JSON_UTF8)
-                .content("{\"id\": \"" + 123456 + "\", \"nome\":\"" + USER_NAME + "\",\"cpf\":\"" + USER_CPF + "\",\"email\":\"" + USER_EMAIL + "\"}"))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-    @Test
-    public void editaUsuarioComOIdErradoNoBody() throws Exception {
-        mockMvc.perform(put("/api/users/" + initialInsertId)
-                .contentType(APPLICATION_JSON_UTF8)
-                .content("{\"id\": \"" + 123456 + "\", \"nome\":\"" + USER_NAME + "\",\"cpf\":\"" + USER_CPF + "\",\"email\":\"" + USER_EMAIL + "\"}"))
+                .content("{\"nome\":\"" + USER_NAME + "\",\"cpf\":\"" + USER_CPF + "\",\"email\":\"" + USER_EMAIL + "\"}"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }

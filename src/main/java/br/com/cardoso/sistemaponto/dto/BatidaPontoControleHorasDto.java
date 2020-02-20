@@ -1,4 +1,4 @@
-package br.com.cardoso.sistemaponto.persistence.model;
+package br.com.cardoso.sistemaponto.dto;
 
 import org.joda.time.Period;
 import org.joda.time.Seconds;
@@ -7,15 +7,15 @@ import org.joda.time.format.PeriodFormatterBuilder;
 
 import java.util.List;
 
-public class ControleHoras {
-    private List<BatidaPonto> batidaPontoList;
+public class BatidaPontoControleHorasDto {
+    private List<BatidaPontoDto> batidaPontoList;
     private String horasTrabalhadas;
 
-    public List<BatidaPonto> getBatidaPontoList() {
+    public List<BatidaPontoDto> getBatidaPontoList() {
         return batidaPontoList;
     }
 
-    public void setBatidaPontoList(List<BatidaPonto> batidaPontoList) {
+    public void setBatidaPontoList(List<BatidaPontoDto> batidaPontoList) {
         this.batidaPontoList = batidaPontoList;
     }
 

@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -17,8 +18,8 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public Iterable obtemUsuarios() {
-        return usuarioRepository.findAll();
+    public List<Usuario> obtemUsuarios() {
+        return (List<Usuario>) usuarioRepository.findAll();
     }
 
     public Usuario getUsuario(Long id) {
@@ -33,22 +34,16 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
-    public void deletaUsuario(Long id) {
+    public Usuario deletaUsuario(Long id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if (usuario.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado na base de dados.");
         }
         usuarioRepository.deleteById(id);
+        return usuario.get();
     }
 
-    public Usuario atualizaUsuario(Usuario usuario, Long id) {
-        if (usuario.getId() != id) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id do usuário informado não corresponde ao id passado como parâmetro");
-        }
-        Optional<Usuario> usuarioEncontrado = usuarioRepository.findById(id);
-        if (usuarioEncontrado.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado na base de dados.");
-        }
+    public Usuario atualizaUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 }

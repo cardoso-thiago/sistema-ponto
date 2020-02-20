@@ -22,7 +22,7 @@ public class Usuario {
     private String email;
 
     @Column(updatable = false)
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime dataCadastro = new DateTime();
 
     public long getId() {
@@ -31,6 +31,10 @@ public class Usuario {
 
     public DateTime getDataCadastro() {
         return dataCadastro;
+    }
+
+    public void setDataCadastro(DateTime dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     public String getNome() {
